@@ -40,7 +40,13 @@ public class produtoServico {
             rm.setMensagem("A descrição do produto é orbigatória");
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);         
         }else if(pm.getMarcaId() == 0){
-            rm.setMensagem("A marca do produto é orbigatória");
+            rm.setMensagem("A marca do produto é orbrigatória");
+            return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
+        }else if(pm.getPreco() == 0){
+            rm.setMensagem("O preço do produto não pode ser igual a zero");
+            return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
+        }else if(pm.getTipo().equals("")){
+            rm.setMensagem("O tipo do produto é orbrigatório");
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_REQUEST);
         }else{
             if(acao.equals("cadastrar")){
